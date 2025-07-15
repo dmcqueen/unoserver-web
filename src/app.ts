@@ -83,9 +83,13 @@ export function createApp({
 		initOAuth: {},
 	})
 
-	fastify.get('/', (req, res) => {
-		res.redirect(`${basePath}/documentation/static/index.html`)
-	})
+        fastify.get('/', (req, res) => {
+                res.redirect(`${basePath}/documentation/static/index.html`)
+        })
+
+        fastify.get('/liveness', async (_req, res) => {
+                res.status(200).send('OK')
+        })
 
 	fastify.register(routes)
 
